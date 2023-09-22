@@ -4,6 +4,7 @@ import Link from 'next/link'
 import LogoutButton from '../components/LogoutButton'
 import SupabaseLogo from '../components/SupabaseLogo'
 import NextJsLogo from '../components/NextJsLogo'
+import {Button} from '@/components/ui/button'
 
 export const dynamic = 'force-dynamic'
 
@@ -46,15 +47,21 @@ export default async function Index() {
   } = await supabase.auth.getUser()
 
   return (
-    <div className="w-full flex flex-col items-center">
-      <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
+    <div className="w-full flex flex-col items-center bg-background">
+      <nav className="w-full flex justify-center border-b border-b-background/10 h-16">
         <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm text-foreground">
           <div />
           <div>
             {user ? (
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2 dark:text-slate-500">
                 Hey, {user.email}!
+                <Button variant='link' className='dark:text-slate-200'>
+                <Link href='/dashboard'>
+                  Dashboard
+            </Link>
+            </Button>
                 <LogoutButton />
+                
               </div>
             ) : (
               <Link
@@ -68,17 +75,17 @@ export default async function Index() {
         </div>
       </nav>
 
-      <div className="animate-in flex flex-col gap-14 opacity-0 max-w-4xl px-3 py-16 lg:py-24 text-foreground">
+      <div className="animate-in flex flex-col gap-14 opacity-1 max-w-4xl px-3 py-16 lg:py-24 text-foreground">
         <div className="flex flex-col items-center mb-4 lg:mb-12">
-          <div className="flex gap-8 justify-center items-center">
+          <div className="flex gap-8 justify-center items-center dark:text-white">
             <Link href="https://supabase.com/" target="_blank">
-              <SupabaseLogo />
+              <p>Supabase</p>
             </Link>
             <span className="border-l rotate-45 h-6" />
-            <NextJsLogo />
+            <p>Next.js</p>
           </div>
           <h1 className="sr-only">Supabase and Next.js Starter Template</h1>
-          <p className="text-3xl lg:text-4xl !leading-tight mx-auto max-w-xl text-center my-12">
+          <p className="text-3xl lg:text-4xl !leading-tight mx-auto max-w-xl text-center my-12 dark:text-slate-200">
             The fastest way to start building apps with{' '}
             <strong>Supabase</strong> and <strong>Next.js</strong>
           </p>
@@ -87,17 +94,17 @@ export default async function Index() {
           </div>
         </div>
 
-        <div className="w-full p-[1px] bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
+        <div className="w-full p-[1px] bg-gradient-to-r from-transparent via-background/10 to-transparent" />
 
         <div className="flex flex-col gap-8 text-foreground">
-          <h2 className="text-lg font-bold text-center">
+          <h2 className="text-lg font-bold text-center dark:text-slate-200">
             Everything you need to get started
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             {resources.map(({ title, subtitle, url, icon }) => (
               <a
                 key={title}
-                className="relative flex flex-col group rounded-lg border p-6 hover:border-foreground"
+                className="relative flex flex-col group rounded-lg border p-6 hover:border-foreground dark:text-slate-200"
                 href={url}
                 target="_blank"
                 rel="noreferrer"
@@ -147,7 +154,7 @@ export default async function Index() {
         </div>
 
         <div className="flex flex-col gap-8 text-foreground">
-          <div className="grid gap-2 justify-center mx-auto text-center">
+          <div className="grid gap-2 justify-center mx-auto text-center dark:text-slate-200">
             <h2 className="text-lg font-bold text-center">Examples</h2>
             <p className="text-sm">
               Look in the <code>_examples</code> folder to see how to create a
@@ -158,7 +165,7 @@ export default async function Index() {
             {examples.map(({ type, src }) => (
               <div
                 key={type}
-                className="w-full grid grid-cols-3 border-b last:border-b-0 text-sm"
+                className="w-full grid grid-cols-3 border-b last:border-b-0 text-sm dark:text-slate-200"
               >
                 <div className="flex items-center font-bold p-4 min-h-12 w-full">
                   {type}
@@ -171,7 +178,7 @@ export default async function Index() {
           </div>
         </div>
 
-        <div className="flex justify-center text-center text-xs">
+        <div className="flex justify-center text-center text-xs dark:text-slate-200">
           <p>
             Powered by{' '}
             <Link
