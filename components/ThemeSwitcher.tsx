@@ -1,5 +1,3 @@
-"use client"
-
 import React,{useState, useEffect} from 'react';
 import {Button} from '@/components/ui/button'
 import {Popover, PopoverContent, PopoverTrigger} from '@/components/ui/popover'
@@ -11,19 +9,16 @@ import {GrPersonalComputer} from 'react-icons/gr'
 
 const ThemeSwitcher = () => {
     const { setTheme: setMode, resolvedTheme: mode } = useTheme()
-    useEffect(() => {
-        console.log(mode);
-      }, [mode]);
     return (
         <Popover>
       <PopoverTrigger asChild>
-        <Button variant={'link'} className='underline text-background'>
+        <Button variant={'link'} className='underline text-foreground'>
             Theme
         </Button>
       </PopoverTrigger>
       <PopoverContent className="bg-background border-slate-800 flex flex-col gap-3">
-        <p className='text-2lg text-background font-jetbrains-mono'>Customize Theme</p>
-        <div className='flex flex-row justify-between'>
+        <p className='text-2lg text-foreground font-jetbrains-mono'>Customize Theme</p>
+        <div className='flex flex-row gap-2'>
         <Button
                   variant={"outline"}
                   size="sm"
@@ -32,7 +27,7 @@ const ThemeSwitcher = () => {
                       setMode("light");
                     }
                   }}
-                  className={cn(mode === "light" && "border-2 bg-red-500 border-primary",'text-background')}
+                  className={cn(mode === "light" && "border-2 border-primary",'text-foreground')}
                 >
                   <BsSun className="mr-1 -translate-x-1" />
                   Light
@@ -45,23 +40,10 @@ const ThemeSwitcher = () => {
                       setMode("dark");
                     }
                   }}
-                  className={cn(mode === "dark" && "border-2 bg-red-500 border-primary", 'text-background')}
+                  className={cn(mode === "dark" && "border-2 border-primary", 'text-foreground')}
                 >
                   <BsMoonStars className="mr-1 -translate-x-1" />
                   Dark
-                </Button>
-                <Button
-                  variant={"outline"}
-                  size="sm"
-                  onClick={() => {
-                    if (mode !== "system") {
-                      setMode("system");
-                    }
-                  }}
-                  className={cn(mode === "system" && "border-5 bg-red-500 border-primary", 'text-background')}
-                >
-                  <GrPersonalComputer className="mr-1 -translate-x-1" />
-                  System
                 </Button>
         </div>
       </PopoverContent>

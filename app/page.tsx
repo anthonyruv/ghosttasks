@@ -4,7 +4,9 @@ import Link from 'next/link'
 import LogoutButton from '../components/LogoutButton'
 import SupabaseLogo from '../components/SupabaseLogo'
 import NextJsLogo from '../components/NextJsLogo'
-import {Button} from '@/components/ui/button'
+import {Button} from '@nextui-org/react'
+import { Divider } from '@nextui-org/react'
+import ActionBar from './components/action-bar'
 
 export const dynamic = 'force-dynamic'
 
@@ -74,6 +76,10 @@ export default async function Index() {
           </div>
         </div>
       </nav>
+      {user ? (
+        <ActionBar/>
+      ): null}
+      
 
       <div className="animate-in flex flex-col gap-14 opacity-1 max-w-4xl px-3 py-16 lg:py-24 text-foreground">
         <div className="flex flex-col items-center mb-4 lg:mb-12">

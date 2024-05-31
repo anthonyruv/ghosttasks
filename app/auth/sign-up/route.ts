@@ -8,12 +8,10 @@ export async function POST(request: Request) {
   const requestUrl = new URL(request.url)
   const formData = await request.formData()
   const email = String(formData.get('email'))
-  const password = String(formData.get('password'))
   const supabase = createRouteHandlerClient({ cookies })
 
-  const { error } = await supabase.auth.signUp({
+  const { error } = await supabase.auth.signInWithOtp({
     email,
-    password,
     options: {
       emailRedirectTo: `${requestUrl.origin}/auth/callback`,
     },

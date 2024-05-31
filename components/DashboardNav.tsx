@@ -13,7 +13,7 @@ import ThemeSwitcher from "./ThemeSwitcher";
 
 const DashboardNav = () => {
     return (
-        <div className="flex justify-evenly p-5 items-center border-b border-b-background/10 bg-background h-16">
+        <div className="flex justify-evenly p-5 items-center border-b border-b-foreground/10 bg-background h-16">
             <div className="flex items-center gap-1">
             <Button variant={'outline'} className="text-foreground"><Link href='/'>GhostTasks</Link></Button>
                 <Button variant={'link'} className="text-foreground">
